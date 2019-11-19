@@ -36,7 +36,7 @@ public class FrontendTest extends ConfigFronted {
         WebElement loginElement = driver.findElement(By.xpath("//*[@id=\"lpc-header-nav\"]/div/div/div[1]/header/nav/ul[2]/li[1]/a"));
 
         try {
-            Thread.sleep(4000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -44,17 +44,26 @@ public class FrontendTest extends ConfigFronted {
         assertTrue(loginElement.isDisplayed());
         loginElement.click();
 
-        WebElement login2  = driver.findElement(By.id("usernameOrEmail"));
-        WebElement continueButton = driver.findElement(By.xpath("//*[@id=\"primary\"]/div/main/div/div[1]/div/form/div[1]/div[2]/button"));
-
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
+
+        WebElement login2  = driver.findElement(By.id("usernameOrEmail"));
+        WebElement continueButton = driver.findElement(By.xpath("//*[@id=\"primary\"]/div/main/div/div[1]/div/form/div[1]/div[2]/button"));
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         assertTrue(login2.isDisplayed());
         assertTrue(continueButton.isDisplayed());
+        login2.sendKeys("jagodaszybiak@gmail.com");
+        continueButton.click();
 
     }
 
