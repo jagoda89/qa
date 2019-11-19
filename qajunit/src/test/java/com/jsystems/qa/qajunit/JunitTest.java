@@ -1,5 +1,6 @@
 package com.jsystems.qa.qajunit;
 
+import junit.framework.TestCase;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
@@ -13,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Junit tests")  //Do wyświetlania w raporcie
 @Tag("unit") //można puszczac testy tylko z danym tagiem. Mozna to zrobic na poziomie klasy lub na poziomie metody
 
-public class JunitTest  extends ConfigJunit{
+public class JunitTest extends ConfigJunit {
 
 
     @BeforeEach //przed każdym testem
-    public void setupEach(TestInfo testInfo){
+    public void setupEach(TestInfo testInfo) {
         System.out.println("Before each");
         System.out.println(testInfo.getDisplayName());
         System.out.println(testInfo.getTags());
@@ -25,10 +26,9 @@ public class JunitTest  extends ConfigJunit{
     }
 
     @AfterEach
-    public void tearDownEach(){
+    public void tearDownEach() {
         System.out.println("After each");
     }
-
 
 
     final String stringTestowy = "stringTestowy";
@@ -63,18 +63,39 @@ public class JunitTest  extends ConfigJunit{
         assertTrue(result == 0.04);
     }
 
+    @Test
+    public void stringTest() {
+
+
+        String simpleString = "simpleString";
+        String simple = "simpleString";
+        String simpleString_2 = new String("simpleString");
+        String simpleString_3 = new String("simpleString");
+
+        assertTrue(simpleString == "simpleString");
+        assertTrue(simpleString == simple);
+        assertFalse(simpleString == simpleString_2);
+        assertFalse(simpleString_2 == simpleString_3);
+        assertTrue(simpleString.equals(simple));
+        assertTrue(simpleString_2.equals(simpleString_3));
+
+
+        int a = 1;
+        Integer a_1 = 1;
+    }
+
     @Nested // adnotacja do korzystania z testów zagnieżdżonych
     public class NestedTest {
 
-        List<Integer> list1 = Arrays.asList(1,2,3,4,5);
-        List<Integer> list2 = Arrays.asList(3,4,5);
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(3, 4, 5);
 
         @Test
         public void firstNestedTest() {
 
             assertTrue(list1.containsAll(list2));
             assertThat(list1).hasSize(5);
-            assertThat(list1).containsAnyOf(1,2,3);
+            assertThat(list1).containsAnyOf(1, 2, 3);
         }
 
         @Test
