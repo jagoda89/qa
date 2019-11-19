@@ -12,17 +12,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Junit tests")  //Do wyświetlania w raporcie
 @Tag("unit") //można puszczac testy tylko z danym tagiem. Mozna to zrobic na poziomie klasy lub na poziomie metody
-public class JunitTest {
+
+public class JunitTest  extends ConfigJunit{
+
+
+    @BeforeEach //przed każdym testem
+    public void setupEach(TestInfo testInfo){
+        System.out.println("Before each");
+        System.out.println(testInfo.getDisplayName());
+        System.out.println(testInfo.getTags());
+        System.out.println(testInfo.getTestMethod());
+    }
+
+    @AfterEach
+    public void tearDownEach(){
+        System.out.println("After each");
+    }
+
+
 
     final String stringTestowy = "stringTestowy";
 
     //kolejność adnotacji ma znaczenie!!!
+
     @DisplayName("Junit tests")  //Do wyświetlania w raporcie
     @Test
     @RepeatedTest(5) //wykona nam test 5 razy
     @Tag("first")
     @Disabled("bug: import , 1230") //tego testu nie będzie uruchamiał
-
     public void firstTest() {
 
         assertTrue(stringTestowy.contains("tr"));

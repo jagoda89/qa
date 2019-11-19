@@ -9,6 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <tags>UnitTest, ApiTest</tags>
+    </properties>
+
     <artifactId>qajunit</artifactId>
 <dependencies>
     <dependency>
