@@ -31,6 +31,8 @@
         <artifactId>junit-jupiter-params</artifactId>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
 
 </dependencies>
 
