@@ -72,9 +72,9 @@ public class JunitTest extends ConfigJunit {
         String simpleString_2 = new String("simpleString");
         String simpleString_3 = new String("simpleString");
 
-        assertTrue(simpleString == "simpleString");
+        assertTrue(simpleString == "simpleString"); //porównywanie zmiennych poprzez ==
         assertTrue(simpleString == simple);
-        assertFalse(simpleString == simpleString_2);
+        assertFalse(simpleString == simpleString_2); // nie możemy użyć znaku == przy porównywaniu zmiennej do obiektu
         assertFalse(simpleString_2 == simpleString_3);
         assertTrue(simpleString.equals(simple));
         assertTrue(simpleString_2.equals(simpleString_3));
@@ -82,6 +82,24 @@ public class JunitTest extends ConfigJunit {
 
         int a = 1;
         Integer a_1 = 1;
+    }
+
+    @Test
+    public void zadanie1(){
+
+        String resultString = "Wordpress powers 1233333333% of the Internet";
+        String expectedResult = "Wordpress powers [number]% of the Internet";
+
+        //sprawdzic czy zwracany resultstring jest taki jak expected string z wyjatkiem zmieniajacego sie numeru
+        //czy numer jest zwracany poprawnie (liczba całkowita) i czy jest wiekszy od 0
+
+        assertTrue(resultString.startsWith("Wordpress powers "));
+        assertTrue(resultString.endsWith("% of the Internet"));
+        assertThat(resultString).matches("(Wordpress powers )\\d+(% of the Internet)"); // d+ cyfra 0-9 + 1 lub więcej cyfr
+
+        String result = resultString.replace("Wordpress powers ", "").replace("% of the Internet", "");
+        int resultNumber = Integer.parseInt(result);
+        assertTrue(resultNumber >0);
     }
 
     @Nested // adnotacja do korzystania z testów zagnieżdżonych
