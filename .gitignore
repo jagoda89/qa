@@ -2,3 +2,6 @@
 /.idea/
 .iml
 /target/
+/qa.iml
+/qajunit/qajunit.iml
+/qagui/qagui.iml
