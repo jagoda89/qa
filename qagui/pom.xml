@@ -51,6 +51,12 @@
             <artifactId>selenium-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <artifactId>qagui</artifactId>
