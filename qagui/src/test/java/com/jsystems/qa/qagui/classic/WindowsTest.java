@@ -1,4 +1,4 @@
-package com.jsystems.qa.qagui;
+package com.jsystems.qa.qagui.classic;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;

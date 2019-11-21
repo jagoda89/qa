@@ -1,5 +1,6 @@
-package com.jsystems.qa.qagui;
+package com.jsystems.qa.qagui.classic;
 
+import com.jsystems.qa.qagui.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
