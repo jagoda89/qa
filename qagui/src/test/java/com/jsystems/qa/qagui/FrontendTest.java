@@ -36,67 +36,55 @@ public class FrontendTest extends ConfigFrontend {
 
     @Test
     public void loginTest() {
-
         driver.navigate().to(Configuration.BASE_URL);
         MainWordpressPage mainWordpressPage = new MainWordpressPage(driver);
-
 //        String loginIconSelector = ".x-nav-item.x-nav-item--wide.x-nav-item--logged-in";
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(loginIconSelector)));
-
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
+//
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(loginIconSelector)));
 //        WebElement loginIcon = driver.findElement(By.cssSelector(loginIconSelector));
-        wait.until(ExpectedConditions.elementToBeClickable(mainWordpressPage.loginIcon));
-
+//        wait.until(ExpectedConditions.elementToBeClickable(mainWordpressPage.loginIcon));
+        mainWordpressPage.waitForElementToBeVisibility(By.cssSelector(loginIconSelector));
+        mainWordpressPage.waitForElementToBeClickable(mainWordpressPage.loginIcon);
         mainWordpressPage.loginIcon.click();
-
         LoginPage loginPage = new LoginPage(driver);
 //        String usernameOrEmailSelector = "usernameOrEmail";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(usernameOrEmailSelector)));
-
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(usernameOrEmailSelector)));
+        loginPage.waitForElementToBeVisibility(By.id(usernameOrEmailSelector));
 //        WebElement usernameInput = driver.findElement(By.id(usernameOrEmailSelector));
-
         loginPage.usernameInput.clear();
         loginPage.usernameInput.sendKeys(Configuration.LOGIN);
-
 //        String primaryButtonSelector = ".button.form-button.is-primary";
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(primaryButtonSelector)));
-
+//        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(primaryButtonSelector)));
+        loginPage.waitForElementToBeClickable(By.cssSelector(primaryButtonSelector));
 //        WebElement usernameButton = driver.findElement(By.cssSelector(primaryButtonSelector));
         loginPage.usernameButton.click();
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(passwordInputSelector)));
+//        wait.until(ExpectedConditions.elementToBeClickable(By.id(passwordInputSelector)));
+        loginPage.waitForElementToBeClickable(By.id(passwordInputSelector));
 //        WebElement inputPassword = driver.findElement(By.id("password"));
-
         loginPage.inputPassword.clear();
         loginPage.inputPassword.sendKeys(Configuration.PASSWORD);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(primaryButtonSelector)));
+//        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(primaryButtonSelector)));
+        loginPage.waitForElementToBeClickable(By.cssSelector(primaryButtonSelector));
 //        WebElement buttonPassword = driver.findElement(By.cssSelector(primaryButtonSelector));
         loginPage.usernameButton.click();
-
         UserPage userPage = new UserPage(driver);
-
 //        String userAvatarSelector = ".masterbar__item.masterbar__item-me";
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(userAvatarSelector)));
-
+//        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(userAvatarSelector)));
+        userPage.waitForElementToBeClickable(By.cssSelector(userAvatarSelector));
 //        WebElement userAvatar = driver.findElement(By.cssSelector(userAvatarSelector));
         userPage.userAvatar.click();
-
 //        String userDisplayNameSelector = ".profile-gravatar__user-display-name";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(userDisplayNameSelector)));
-
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(userDisplayNameSelector)));
+        userPage.waitForElementToBeClickable(By.cssSelector(userDisplayNameSelector));
 //        WebElement userDisplayName = driver.findElement(By.cssSelector(userDisplayNameSelector));
         String userDisplayNameText = userPage.userDisplayName.getText();
-
         assertThat(userDisplayNameText).isEqualTo("tutifruti89");
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(UserPage.primaryButtonSelector)));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(UserPage.primaryButtonSelector)));
+        userPage.waitForElementToBeVisibility(By.cssSelector(UserPage.primaryButtonSelector));
 //        WebElement saveUserDetailsButton = driver.findElement(By.cssSelector(primaryButtonSelector));
-
         assertTrue(userPage.saveUserDetailsButton.isDisplayed());
         assertFalse(userPage.saveUserDetailsButton.isEnabled());
-
-
 //        assertTrue(userDisplayName.isDisplayed());
 //        assertTrue(userDisplayName.isEnabled());
 //        assertThat(userDisplayName.isSelected());
