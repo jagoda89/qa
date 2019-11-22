@@ -18,7 +18,9 @@
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <tags>UnitTest, FrontTest, ApiTest</tags>
+        <tags></tags>
+        <exTags></exTags>
+
     </properties>
 
     <dependencyManagement>
@@ -182,6 +184,7 @@
                 <configuration>
                     <properties>
                         <includeTags>${tags}</includeTags>
+                        <excludeTags>${exTags}</excludeTags>
                     </properties>
                     <includes>
                         <include>**/*Test.java</include>

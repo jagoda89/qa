@@ -1,6 +1,8 @@
-package com.jsystems.qa.qaapi.service;
+package com.jsystems.qa.qaapi.service.user;
 
 import com.jsystems.qa.qaapi.model.User;
+import com.jsystems.qa.qaapi.model.azure.author.AzureAuthor;
+import com.jsystems.qa.qaapi.specification.Specification;
 import io.restassured.RestAssured;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public class UserService {
                 .jsonPath()
                 .getList("", User.class);
     }
+
+
 }

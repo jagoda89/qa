@@ -8,10 +8,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+<properties>
+    <tags></tags>
+    <exTags></exTags>
 
-    <properties>
-        <tags>FrontTest</tags>
-    </properties>
+</properties>
 
     <dependencies>
         <dependency>
